@@ -1,45 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8">
+    <title>Vukory's Amazing Weather App</title>
+    <meta name="description" content="Who needs the weather man when you have Vukory!">
+    <base href="/">
+
+    <!-- Required for Responsive Design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Open Graph Protocol - https://ogp.me/ -->
+    <meta property="og:site_name" content="Vukory's Amazing Weather App" />
+    <meta property="og:title" content="Vukory's Amazing Weather App" />
+    <meta property="og:description" content="An amazing weather app by... Vukory!" />
+    <meta property="og:type" content="website" />
+
+    <!-- CSS/JS -->
+    <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="script.js"></script>
+
+    <!-- Font and Icons -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <section class='frontPage'>
-        <h1>Vrijeme za</h1>
-        <div class="content">
-            <div class="input">
-                <input type="text" id="inputCity" placeholder="Unesite grad">
-                <input type="submit" id="submitBtn" value="NAĐI VRIJEME">
+    <header class="padded">
+        <h1>Vukory's Amazing Weather App</h1>
+    </header>
+    <main class="padded">
+        <div id="interface">
+            <div id="search-panel" class="panel">
+                <label for="location-query" class="weather-lookup-title">Vrijeme za</label>
+                <form action="javascript:onRequest()">
+                    <input id="search-query" type="search" class="input-city" required/><br>
+                    <input type="submit" class="button" value="VIDI VRIJEME" />
+                </form>
+            </div>
+            <div id="display-panel" class="panel">
+                <span>Location: </span><span id="location"></span>
+                <ul id="weather-items"></ul>
             </div>
         </div>
-    </section>
-    <section class='display'>
-        <div id='currentWeather'>
-            <div id="mainInfo">
-                <span id="currentDate"></span>
-                <h2 id="city"> </h2>
-                <h3 id='temperature'></h3>
-                <h3 id='weather'></h3>
-                <img src="" id="weatherIcon">
-                <div id="extraInfo">
-                    <p id="pressure" class="data1">Pritisak: </p>
-                    <p id="humidity" class="data1">Vlažnost: </p>
-                    <p id="minTemp" class="data1">Minimalna temperatura: </p>
-                    <p id="maxTemp" class="data1">Maksimalna temperatura: </p>
-                    <input type="submit" id="loadMoreBtn" value="Prognoza za 5 dana">
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+    </main>
+    <footer class="padded">
+        <p>Weather data provided by: <cite>https://openweathermap.org/</cite></p>
+        <small>Copyright &copy; Vukory 2019-2019</small>
+    </footer>
 </body>
 
 </html>
