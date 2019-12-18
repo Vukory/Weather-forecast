@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <section class='frontPage'>
+        <h1>Vrijeme za</h1>
+        <div class="content">
+            <div class="input">
+                <input type="text" id="inputCity" placeholder="Unesite grad">
+                <input type="submit" id="submitBtn" value="NAĐI VRIJEME">
+            </div>
+        </div>
+    </section>
+    <section class='display'>
+        <div id='currentWeather'>
+            <div id="mainInfo">
+                <span id="currentDate"></span>
+                <h2 id="city"> </h2>
+                <h3 id='temperature'></h3>
+                <h3 id='weather'></h3>
+                <img src="" id="weatherIcon">
+                <div id="extraInfo">
+                    <p id="pressure" class="data1">Pritisak: </p>
+                    <p id="humidity" class="data1">Vlažnost: </p>
+                    <p id="minTemp" class="data1">Minimalna temperatura: </p>
+                    <p id="maxTemp" class="data1">Maksimalna temperatura: </p>
+                    <input type="submit" id="loadMoreBtn" value="Prognoza za 5 dana">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
