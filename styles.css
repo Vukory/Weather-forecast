@@ -139,7 +139,7 @@ form {
     color: #747474;
 }
 
-#weather-items li+li p:not(.temp) {
+#weather-items li+li p.hide {
     display: none;
 }
 

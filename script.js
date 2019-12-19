@@ -18,11 +18,12 @@ const liTemplate =
     `
   <li>
     <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
-    <p class="humidity">Vlažnost: {{humidity}}</p>
-    <p class="pressure">Pritisak: {{pressure}}</p>
-    <p class="temp">Temperatura: {{temp}}</p>
-    <p class="temp-min">Minimalna temperatura: {{temp_min}}</p>
-    <p class="temp-max">Maksimalna temperatura: {{temp_max}}</p>
+    <p class="dt">{{dt}}</p>
+    <p class="humidity">Vlažnost: {{humidity}} %</p>
+    <p class="pressure">Pritisak: {{pressure}} hPa</p>
+    <p class="temp">Temperatura: {{temp}} °C</p>
+    <p class="temp-min">Minimalna temperatura: {{temp_min}} °C</p>
+    <p class="temp-max">Maksimalna temperatura: {{temp_max}} °C</p>
   </li>`;
 
 
@@ -46,10 +47,15 @@ function onRequest() {
         ul.html("");
 
         for (let i = 0; i < itemsOfInterest.length; i++) {
-            const item = data.list[i];
+            const item = data.list[itemsOfInterest[i]];
             const main = item.main;
             const weather = item.weather[0];
             let liItem = liTemplate;
+
+            const dt = item.dt;
+            const date = new Date(dt * 1000);
+            liItem = liItem.replace('{{dt}}', date.toLocaleDateString('bs-BA'));
+
 
             for (const key in main)
                 liItem = liItem.replace(`{{${key}}}`, main[key]);
