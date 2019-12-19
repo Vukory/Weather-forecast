@@ -17,14 +17,13 @@ const itemsOfInterest = [0, 8, 16, 24, 32, 39];
 const liTemplate =
     `
   <li>
-    
     <p class="dt">{{dt}}</p>
     <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
-    <p class="humidity">Vlažnost: {{humidity}} %</p>
-    <p class="pressure">Pritisak: {{pressure}} hPa</p>
-    <p class="temp">Temperatura: {{temp}} °C</p>
-    <p class="temp-min">Minimalna temperatura: {{temp_min}} °C</p>
-    <p class="temp-max">Maksimalna temperatura: {{temp_max}} °C</p>
+    <p class="humidity row">Vlažnost: {{humidity}} %</p>
+    <p class="pressure row">Pritisak: {{pressure}} hPa</p>
+    <p class="temp row">Temperatura: {{temp}} °C</p>
+    <p class="temp-min row">Minimalna temperatura: {{temp_min}} °C</p>
+    <p class="temp-max row">Maksimalna temperatura: {{temp_max}} °C</p>
   </li>`;
 
 

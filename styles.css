@@ -85,8 +85,8 @@ main {
 }
 
 #interface {
-    height: 400px;
-    width: 720px;
+    height: min-height;
+    width: 700px;
     background-color: var(--bg-pri);
     border-radius: .5em;
     display: flex;
@@ -161,6 +161,16 @@ li {
 li:first-child {
     font-size: 120%;
     border-bottom: 3px solid rgba(255, 255, 255, 0.247);
+    margin-bottom: 1em;
+}
+
+li:not(:first-child) {
+    display: flex;
+    margin-left: -90%;
+}
+
+li:not(:first-child) .row {
+    margin-right: 1em;
 }
 
 
