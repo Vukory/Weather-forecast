@@ -16,7 +16,7 @@ const itemsOfInterest = [0, 8, 16, 24, 32, 39];
 
 const liTemplate =
     `
-  <li>
+  
     <p class="dt">{{dt}}</p>
     <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
     <p class="humidity row">Vlažnost: {{humidity}} %</p>
@@ -24,7 +24,7 @@ const liTemplate =
     <p class="temp row">Temperatura: {{temp}} °C</p>
     <p class="temp-min row">Minimalna temperatura: {{temp_min}} °C</p>
     <p class="temp-max row">Maksimalna temperatura: {{temp_max}} °C</p>
-  </li>`;
+  `;
 
 
 function onRequest() {
@@ -46,6 +46,9 @@ function onRequest() {
         const ul = $("#weather-items");
         ul.html("");
 
+        const today = $('#today');
+        today.html(" ");
+
         for (let i = 0; i < itemsOfInterest.length; i++) {
             const item = data.list[itemsOfInterest[i]];
             const main = item.main;
@@ -62,8 +65,10 @@ function onRequest() {
 
             for (const key in weather)
                 liItem = liItem.replace(`{{${key}}}`, weather[key]);
-
-            ul.append(liItem);
+            if (i == 0)
+                today.append(liItem);
+            else
+                ul.append("<li>" + liItem + "<li>");
         }
     });
 }
