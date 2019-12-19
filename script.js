@@ -8,25 +8,29 @@ const baseUrl = 'https://api.openweathermap.org/data/2.5';
 const endpoint = '/forecast';
 
 /** Whenever we want to make a request, just dash the query at the end of this. */
-const requestTemplate = `${baseUrl}${endpoint}?appid=${apiKey}&q=`;
+const requestTemplate = `${baseUrl}${endpoint}?appid=${apiKey}&units=metric&q=`;
 
 /** The index of the items in the list of temperatures we actually want. */
 const itemsOfInterest = [0, 8, 16, 24, 32, 39];
 
+
 const liTemplate =
     `
   <li>
-    <p class="humidity">Humidity: {{humidity}}</p>
-    <p class="pressure">Pressure: {{pressure}}</p>
-    <p class="temp">Temperature: {{temp}}</p>
-    <p class="temp-min">Minimum Temperature: {{temp_min}}</p>
-    <p class="temp-max">Maximum Temperature: {{temp_max}}</p>
+    <img src="https://openweathermap.org/img/wn/{{icon}}@2x.png">
+    <p class="humidity">Vlažnost: {{humidity}}</p>
+    <p class="pressure">Pritisak: {{pressure}}</p>
+    <p class="temp">Temperatura: {{temp}}</p>
+    <p class="temp-min">Minimalna temperatura: {{temp_min}}</p>
+    <p class="temp-max">Maksimalna temperatura: {{temp_max}}</p>
   </li>`;
+
 
 function onRequest() {
     console.log("Put in a query.");
     const query = $("#search-query").val();
     const requestUrl = requestTemplate + query;
+
 
     $.get(requestUrl, function(data, textStatus, jqXhr) {
         console.log('Succesfully made request: ', data);
@@ -44,10 +48,14 @@ function onRequest() {
         for (let i = 0; i < itemsOfInterest.length; i++) {
             const item = data.list[i];
             const main = item.main;
+            const weather = item.weather[0];
             let liItem = liTemplate;
 
             for (const key in main)
                 liItem = liItem.replace(`{{${key}}}`, main[key]);
+
+            for (const key in weather)
+                liItem = liItem.replace(`{{${key}}}`, weather[key]);
 
             ul.append(liItem);
         }
