@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
 /* Reset */
 
 html,
@@ -44,7 +46,7 @@ body {
     font-family: Roboto, sans-serif;
     background-color: var(--bg-sec);
     color: var(--fg-txt);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -139,12 +141,26 @@ form {
     color: #747474;
 }
 
+span {
+    font-size: 160%;
+}
+
 #weather-items li+li p.hide {
     display: none;
 }
 
 footer {
     text-align: center;
+}
+
+li {
+    list-style-type: none;
+    padding: 1em 0 1em 0;
+}
+
+li:first-child {
+    font-size: 120%;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.247);
 }
 
 
